@@ -1,0 +1,265 @@
+\documentclass{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% package setup
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage[shortlabels]{enumitem}
+\usepackage{amsfonts,amsmath, soul, matlab-prettifier, bm, amsthm,enumitem,amssymb,multirow,float,mathtools,bbm,array,varwidth,hyperref,bm}
+\usepackage[all]{xy}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{graphicx}
+\usepackage{mathtools, caption, dsfont, tikz-cd}
+\usepackage{wrapfig}
+
+% tikzpicture
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+
+
+\mathchardef\mhyphen="2D
+
+
+\raggedbottom
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% operators and symbols
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% operators
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Ext}{\mathrm{Ext}}
+\newcommand{\Ker}{\mathrm{Ker}}
+\newcommand{\Pic}{\mathrm{Pic}}
+\newcommand{\comp}{\mathrm{comp}}
+\newcommand{\Proj}{\mathrm{Proj}}
+\newcommand{\rk}{\mathrm{rk}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\Frob}{\mathrm{Frob}}
+\newcommand{\Gal}{\mathrm{Gal}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\Ind}{\mathrm{Ind}}
+\newcommand{\Rep}{\mathrm{Rep}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Res}{\mathrm{Res}}
+\newcommand{\Smo}{\mathrm{Smo}}
+\newcommand{\Span}{\mathrm{Span}}
+\newcommand{\Frac}{\mathrm{Frac}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\St}{\mathrm{St}}
+\newcommand{\Top}{\mathrm{Top}}
+\newcommand{\Ab}{\mathrm{Ab}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\ad}{\mathrm{ad}}
+\newcommand{\hht}{\mathrm{ht}}
+
+\newcommand{\PGL}{\mathrm{PGL}}
+\newcommand{\PSL}{\mathrm{PSL}}
+\newcommand{\Psh}{\mathrm{Psh}}
+\newcommand{\Sh}{\mathrm{Sh}}
+\newcommand{\Id}{\mathrm{Id}}
+
+% greek 
+\newcommand{\calpha}{\check{\alpha}}
+\newcommand{\cPhi}{\check{\Phi}}
+\newcommand{\cbeta}{\check{\beta}}
+
+% shortcuts
+\newcommand{\slii}{\mathfrak{sl}_2}
+\newcommand{\sliii}{\mathfrak{sl}_3}
+\newcommand{\gl}{\mathfrak{gl}}
+\newcommand{\eW}{\widetilde{W_a}}
+
+
+% mathcal
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cH}{\mathcal{H}}
+
+% mathbb
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\adele}{\mathbb{A}}
+\newcommand{\pp}{\mathfrak{p}}
+\newcommand{\nn}{\mathfrak{n}}
+\newcommand{\mm}{\mathfrak{m}}
+
+% mathfrak
+\newcommand{\fg}{\mathfrak{g}}
+\newcommand{\fh}{\mathfrak{h}}
+\newcommand{\fm}{\mathfrak{m}}
+
+% shortcuts
+\newcommand{\CG}{C_c^{\infty}(G)}
+\newcommand{\cInd}{c\mhyphen\mathrm{Ind}}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\hatv}[1]{\overset{\vee}{\mathstrut#1}}
+
+\DeclareMathOperator{\Ima}{Im}
+
+\linespread{1.5}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{question}[theorem]{Question}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{convention}[theorem]{Convention}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{cor}[theorem]{Corollary}
+\newtheorem{algo}[theorem]{Algorithm}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notn}[theorem]{Notation}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{examples}[theorem]{Examples}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{hypothesis}{Hypothesis}
+\newtheorem*{exercise}{Exercise}
+
+
+\title{Quadratic Relations in Hecke Algebras}
+\author{Albert Lopez Bruch}
+
+\begin{document}
+	\maketitle
+	\pagenumbering{arabic}
+    \section{Smooth representations and the Bernstein decomposition}
+
+    Throughout this document, we let $F$ denote an arbitrary $p$-adic field with ring of integers $\mathcal{O}$, and residue field $k_F$ of characteristic $p>0$. Let $q=p^m$ be the cardinality of $k_F$ and let $\varpi$ be a uniformizer.
+
+    Let $G$ denote a connected reductive group, defined and split over $\mathcal{O}$. The group $G(F)$ has a natural locally profinite topology coming from $F$. Fix an $F$-split
+    maximal torus $T$ and a Borel subgroup $B$ containing $T$; assume $T$ and $B$ are defined over $\mathcal{O}$. Let $T_0=T(\mathcal{O})$ denote the maximal compact subgroup of $T(F)$. Let $\Phi\subset X^*(T)$ resp. $\check\Phi \subset X_*(T)$ denote the set of roots resp. coroots for $G$, $T$. Let $U$ resp. $\bar{U}$ denote the
+    unipotent radical of $B$ resp. the Borel subgroup $\bar B \subset T$ opposite to $B$.
+
+    Let $\mathcal{B}(G,F)$ be the building of $G$ and let $\mathcal{A}(G,T,F)$ be the apartment corresponding to $T$, which comes equipped with a hyperplane structure arising from the affine roots. Let 
+    $$I=\langle T(\mathcal{\mathcal{O}}); \mathfrak{X}_\alpha(\mathcal{O}),\mathfrak{X}_{-\alpha}(\varpi\mathcal{O})\ |\ \alpha\in\Phi^+\rangle$$
+    be the Iwahori subgroup of $G$, and let $\textbf{a} \subset\mathcal{A}(G,T,F)$ be the unique alcove such that $G_{x,0}=I$ (first element in the Moy--Prasad filtration) for all $x\in\bf a$.
+
+    Let $C$ be an algebraically closed field of characteristic $\ell\neq p$ and let $\cR_{C}(G)$ be the category smooth $C$-representations of $G$. That is, the objects of $\cR_{C}(G)$ are group homomorphisms $\pi: G\rightarrow GL(V)$ where $V$ is a $C$-vector space such that $\mathrm{Stab}_G(v)$ is an open subgroup of $G$ for all $v\in V$ (with respect to the locally profinite topology induced from $F$). If $V$ is finite dimensional, then the last condition is equivalent to $\ker\pi$ being open in $G(F)$. 
+
+    If $C=\CC$, then the category $\cR_\CC(G)$ has a canonical decomposition. To state it, we consider the set of \textit{supercuspidal pairs} $(M,\sigma)$ where $M$ is an $F$-Levi subgroup of $G$ and $\sigma$ is a supercuspidal representation of $G$. 
+    We say that two supercuspidal pairs $(M_1,\sigma_1)$ and $(M_2,\sigma_2)$ are \textit{inertially equivalent} if there exists some $g\in G(F)$ and \textit{unramified character} $\chi$ of $M_2$ such that $gM_1g^{-1}=M_2$ and $\prescript{g}{}{\sigma_1}\otimes\chi\cong \sigma_2$ as representations of $M_2$. We denote by $[M,\sigma]_G$ the conjugacy class of the pair $(M,\sigma)$, and we note that it is a union of $G$-conjugacy classes of supercuspidal pairs. Finally, let $\mathfrak{J}(G)=\{(M,\sigma)\text{ supercuspidal}\}/\sim$, where $\sim$ is inertial equivalence.
+
+    If $(\pi,V)\in R_\CC(G)$ is irreducible, then there is some supercuspidal pair $(M,\sigma)$, unique up to $G$-conjugacy, such that $\pi$ is a subquotient of $i_P^G(\sigma)$, where $P=N\rtimes M$ is the unique parabolic subgroup with Levi factor $M$ and $i_P^G$ is the normalized parabolic induction. We call the $G$-conjugacy class $(M,\sigma)_G$ the supercuspidal support of $(\pi,V)$. For each $[M,\sigma]_G\in\mathfrak{J}(G)$, we define $\cR_{[M,\sigma]}(G)$ to be the full subcategory of $\cR_\CC(G)$ whose objects are smooth representations $(\pi,V)$ such that for all irreducible subquotients $\pi'$ of $\pi$, the supercuspidal support of $\pi'$ lies in $[M,\sigma]_G$.
+
+    \begin{theorem}[Bernstein Decomposition]
+        The category $\cR_\CC(G)$ has a block decomposition into full subcategories
+        $$\cR_\CC(G)=\prod_{[M,\sigma]\in\mathfrak{J}(G)}\cR_{[M,\sigma]}(G).$$
+    \end{theorem}
+    
+    \begin{remark}
+        In any abstract category of representations $\cR(G)$ of a group $G$ with certain properties (smoothness, for instance) such that the category is closed under direct sums and extensions, one can always decompose $\cR(G)$ into maximal blocks as follows:
+
+        Firstly, we consider an equivalence relation on irreducible representations of $\cR(G)$ generated by the rule that two irreducible representations $(\pi_1,V_1)$ and $(\pi_2,V_2)$ are related if there is some representation $(\sigma,W)\in\cR(G)$ and non-split short exact sequence
+        $$0\longrightarrow (\pi_1,V_1)\longrightarrow(\sigma,W)\longrightarrow(\pi_2,V_2)\longrightarrow 0.$$
+        For any irreducible $(\pi,V)$ we let $\cR_{[\pi,V]}(G)$ to be the full subcategory of representations such that all simple Jordan-Holder factors are equivalent to $(\pi,V)$ under $\sim$.
+        \begin{theorem}
+            The category $\cR(G)$ admits a block decomposition into full subcategories 
+            $$\cR(G)=\prod_{[\pi,V]}\cR_{[\pi,V]}(G)$$
+        \end{theorem}
+        The Theorem is direct consequence of the following result.
+        \begin{proposition}
+            Let $(\sigma,W)\in\cR_{[\pi,V]}(G)$ and $(\sigma',W')\in\cR_{[\pi',V']}(G)$. If $(\pi,V)\not\sim(\pi',V')$, then there are no non-trivial extensions of $(\sigma',W')$ by $(\sigma,W)$. 
+        \end{proposition}
+        \begin{proof}
+            To be written, check the notebook.
+        \end{proof}
+    \end{remark}
+
+
+    \section{Bernstein blocks, types and Hecke algebras}
+    The Bernstein decomposition states that to understand $\cR(G)$, it is enough to understand $\cR_{[M,\sigma]}(G)$ for each $[M,\sigma]\in\mathfrak{J}(G)$. One can then understand each block using the theory of \textit{types}. 
+    \begin{definition}
+        Let $[M,\sigma]\in\mathfrak{J}(G)$. A pair $(K,\rho)$ consisting of a compact open subgroup $K$ of $G(F)$ and an irreducible smooth representation $\rho$ of $K$ is an $[M,\sigma]$-type if for any $(\pi,V)\in \cR_\CC(G)$, the following are equivalent:
+        \begin{enumerate}
+            \item $(\pi,V)\in\cR_{[M,\sigma]}(G).$
+            \item $\Hom_K(\rho,\pi|_K)\neq\{0\}$; that is, $\rho\subseteq \pi|_K$.
+        \end{enumerate}
+    \end{definition}
+
+    \begin{theorem}
+        If $(K,\rho)$ is an $[M,\sigma]$-type, then the functor 
+        \begin{align*}
+            \cR_{[M,\sigma]}(G)&\longrightarrow \End_{G(F)}(\cInd_K^{G(F)}\rho)^{op}-\textrm{mod}\\
+            (\pi,V)&\longmapsto\Hom_K(\rho,\pi|_K)
+        \end{align*}
+        is an equivalence of categories between the block $\cR_{[M,\sigma]}(G)$ and the category of right $\End_{G(F)}(\cInd_K^{G(F)}\rho)$-modules. 
+    \end{theorem}
+    We note that by Frobenius reciprocity, $$\Hom_K(\rho,\pi|_K)\cong\Hom_{G(F)}(\cInd_K^{G(F)}\rho,\pi),$$ so the former is naturally a right $\End_{G(F)}(\cInd_K^{G(F)}\rho)$-module, since it acts on the latter by precomposition.
+
+    The idea of the proof is to show that if $(K,\rho)$ is a $[M,\sigma]$-type, then $\cInd_K^{G(F)}\rho$ is a projective generator of 
+    $\cR_{[M,\sigma]}(G)$, and that the block is equivalent to the full subcategory $\cR_\rho(G)$ whose objects are representations $(\pi,V)$ satisfying $V=V[\rho]$, where $V[\rho]$ is the $G$-submodule of $V$ generated by its $\rho$-isotypical component $V^\rho$. The result then follows by the Morita equivalence. 
+
+    In addition, the Hecke algebra $\End_{G(F)}(\cInd_K^{G(F)}\rho)$ can be described alternatively as a space of functions on $G$ valued on $\End_\CC(W)$, where $W$ is the vector space upon which $\rho$ acts.
+
+    Let $\cH(G,K,\rho)$ denote the space of compactly supported functions $$\varphi:G\longrightarrow\End_\CC(W)$$
+    satisfying
+    $$\varphi(k_1 g k_2)=\rho(k_1)\circ\varphi(g)\circ\rho(k_2)$$
+    for all $k_1,k_2\in K$ and $g\in G(F)$, equipped with a binary operation called \textit{convolution} as follows. If $\varphi_1,\varphi_2\in\cH(G,K,\rho)$, we define the function $\varphi_1*\varphi_2\in\cH(G,K,\rho)$ as
+    $$\varphi_1*\varphi_2(g)=\sum_{h\in G(F)/K}\varphi_1(h)\varphi_2(h^{-1}g)=\int_{G(F)}\varphi_1(h)\varphi_2(h^{-1}g)dh,$$
+    for $g\in G(F)$, where $dh$ denotes a Haar measure on $G(F)$ chosen to have measure $1$ on $K$. This operation gives $\cH(G,K,\rho)$ the structure of an associative $\CC$-algebra, whose identity element is the function $e:G\to\End_\CC(W)$ supported on $K$ such that $e(k)=\rho(k)$ for all $k\in K$.
+
+    \begin{proposition}
+        There are mutually inverse $\CC$-algebra homomorphisms
+        \begin{equation}
+            \Phi\longmapsto \varphi_\Phi\ :\ \End_{G(F)}(\cInd_K^{G(F)}\rho)\longrightarrow\cH(G,K,\rho)\ :\ \varphi \longmapsto \Phi_\varphi
+        \end{equation}
+        where
+        \begin{align*}
+            &\varphi_\Phi(g)(w)=\Phi(f_w)(g)\quad & (g\in G(F), w\in W)\\
+            &\Phi_\varphi(f)(g)=\int_{G(F)}\varphi(h)(f(h^{-1}g))dh \quad &(f\in\cInd_K^{G(F)}\rho, g\in G(F)).
+        \end{align*}
+        Here, $f_w\in\cInd_K^{G(F)}\rho$ is defined by
+        \begin{align*}
+            f_w(g)=
+            \begin{cases}
+                \rho(g)(w) &\text{ if } g\in K,\\
+                0 &\text{ otherwise.}.
+            \end{cases}
+        \end{align*}        
+    \end{proposition}
+    \begin{proof}
+        Long routine checks.
+    \end{proof}
+
+    \section{Depth-zero Hecke algebras for principal series blocks}
+    Let $\cR_{[M,\sigma]}(G)$ be a Bernstein block. If $M$ is the maximal torus $T$ (or a conjugate of $T$), then $\sigma=\chi$ is just a character and the $\cR_{[T,\chi]}(G)$ is called a principal series block. These are the ones we aim to understand. 
+
+    We remark that the block is completely determined the values of $\chi$ on $T(\cO)$, which has a natural filtration of open compact subgroups
+    $$T(\cO)\supset T(1+\varpi\cO)\supset T(1+\varpi^2\cO)\supset T(1+\varpi^3\cO)\supset\cdots$$
+    which forms a basis for the topology at the identity.
+    This motivates the following definition:
+    \begin{definition}
+        The \textit{depth} of $\chi$ is the smallest integer $r$ such that $\chi$ is trivial on $T(1+\varpi^{r+1}\cO)$.
+    \end{definition}
+    In particular, if $\chi$ has depth-zero, then $\chi$ is trivial on $T(1+\varpi\cO)$ and therefore it factors through the quotient $T(\cO)\rightarrow T(k_F)$. We shall abuse notation and denote the resulting character $T(k_F)\rightarrow \CC^{\times}$ also as $\chi$. 
+
+    Moreover, if $I$ is the Iwahori subgroup of $G$ and $I^+$ is its pro-$p$ unipotent radical, then there is an isomorphism
+    $$T(\cO)/T(\cO)\cap I^+\cong I/I^+$$
+    and therefore $\chi$ determines a character $\rho_\chi$ that is trivial on $I^+$. Explicitly, $I$ has an Iwahori decomposition $$I=(I\cap\bar U)\cdot T(\cO)\cdot(I\cap U),$$
+    and $\rho_\chi$ extends $\chi$ in $T(\cO)$ and is trivial on $I\cap\bar U$ and $I\cap U$.
+
+    \begin{theorem}
+        Suppose that $\chi$ is a depth-zero character of $T(\cO)$. Then $(I,\rho_\chi)$ is a $[T,\tilde\chi]$-type, where $\tilde\chi$ is any extension of $\chi$ to $T(F)$.
+    \end{theorem}
+
+    This theorem motivates us to study the Hecke algebra $\cH(G,I,\rho_\chi)$, where $\rho_\chi$ is a character of $I$ arising from a depth-zero character of $T(\cO)$ as described above. 
+
+
+
+\end{document}
