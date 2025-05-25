@@ -490,9 +490,9 @@
             \varpi^2\cO & \varpi\cO & \ldots & \varpi\cO & \cO^\times
         \end{pmatrix}.
     \end{equation*}
-    Therefore, by fixing a set of representatives $R$ of $k_F$ in $\cO$, we obtain
+    Therefore, by fixing a section $t:k_F\rightarrow\cO, a\mapsto a_t$ of the quotient $\cO\rightarrow k_F$, we obtain
     \begin{equation*}
-        Is_0I=\bigsqcup_{c\in R} u_cs_0I,\quad\text{where}\quad u_c=
+        Is_0I=\bigsqcup_{c\in k_F} u_cs_0I,\quad\text{where}\quad u_c=
         \begin{pmatrix}
             %1 & 0 & \cdots & 0 & 0\\
             %0 & 1 & \ddots &  & 0\\
@@ -501,30 +501,31 @@
             %\varpi c & 0 & \ldots & 0 & 1
             1 & & \\
             & 1 & \\
-            \varpi c & & 1
+            \varpi c_t & & 1
         \end{pmatrix}.
     \end{equation*}
 
-    A left cosset $u_cs_0I$ is contained in $s_0Is_0I$ if and only if there is some $z\in R$ such that $s_0u_cs_0u_zc_0\in I$, and a simple calculation shows that this is the case if and only if $c\neq 0\pmod{\varpi\cO}$, in which case $z=c^{-1}\pmod{\varpi\cO}$. Hence, $Is_0I\cap s_0Is_0I=\sqcup_{\substack{c\in R\\c\neq0}}u_cs_0I$ and moreover 
+    A left cosset $u_cs_0I$ is contained in $s_0Is_0I$ if and only if there is some $z\in k_F$ such that $s_0u_cs_0u_zc_0\in I$, and a simple calculation shows that this is the case if and only if $c\neq 0$, in which case $z=c^{-1}$. Hence, $Is_0I\cap s_0Is_0I=\sqcup_{c\in k_F^\times}u_cs_0I$ and moreover 
     $$\iota_c:=s_0u_cs_0u_{1/c}s_0=\begin{pmatrix}
-        -c &&&& \\
+        -c_t &&&& \\
         & 1 &&& \\
         && \ddots && \\
         &&& 1 & \\
-        p &&&& -1/c \\
+        p &&&& -1/c_t \\
     \end{pmatrix}\in I,$$
     so $\rho_\chi(\iota_c)=\chi_0(-c)\chi_n(-1/c)=1$ since $\chi_0=\chi_n$. Consequently, 
     \begin{align*}
-        \varphi_{s_0}^2(s_0)=\sum_{\substack{c\in R\\c\neq0}}\int_{u_cs_0I}\varphi_{s_0}(sh)\varphi_{s_0}(h^{-1})dh=\sum_{\substack{c\in R\\c\neq0}}\int_{I}\varphi_{s_0}(su_csk)\varphi_{s_0}(k^{-1}s_0^{-1}u_c^{-1})dk=\\
-        =\sum_{\substack{c\in R\\c\neq0}}\varphi_{s_0}(\iota_cs_0^{-1}u_{1/c})\varphi_{s_0}(s_0^{-1}u_c^{-1})=\varphi_{s_0}(s_0)^2\sum_{\substack{c\in R\\c\neq0}}\rho_\chi(\iota_c)\rho_\chi(u_{1/c})^{-1}\rho_\chi(u_c)^{-1}=q-1,
+        \varphi_{s_0}^2(s_0)=\sum_{c\in k_F^\times}\int_{u_cs_0I}\varphi_{s_0}(sh)\varphi_{s_0}(h^{-1})dh=\sum_{c\in k_F^\times}\int_{I}\varphi_{s_0}(su_csk)\varphi_{s_0}(k^{-1}s_0^{-1}u_c^{-1})dk=\\
+        =\sum_{c\in k_F^\times}\varphi_{s_0}(\iota_cs_0^{-1}u_{1/c})\varphi_{s_0}(s_0^{-1}u_c^{-1})=\varphi_{s_0}(s_0)^2\sum_{c\in k_F^\times}\rho_\chi(\iota_c)\rho_\chi(u_{1/c})^{-1}\rho_\chi(u_c)^{-1}=|k_F^\times|=q-1,
     \end{align*}
     and this completes the proof that $\varphi_{s_0}^2=(q-1)\varphi_{s_0}+q\varphi_1$.
     
     \newpage
-
-    The proof of the previous result also shows that 
+    Next, we turn out attention towards proving the quadratic relation for $s=w_{\alpha_0}(1)\in S_{\chi,\aff}$. In Lemma \ref{lem_lenghts} we proved that $l(s)=2n-1$ and that 
+    $$\{\alpha\in\Phi^+:w_{\alpha_0}(\alpha)\in\Phi^-\}=\{\alpha_1,\alpha_1+\alpha_2,\ldots,\alpha_0,\ldots,\alpha_{n-1}+\alpha_n,\alpha_n\}$$
+    and this implies that
     \begin{equation*}
-        I\cap w_{\alpha_0}(1)I w_{\alpha_0}(1)^{-1}=\begin{pmatrix}
+        I\cap sI s^{-1}=\begin{pmatrix}
             \cO^\times&\varpi\cO&\varpi\cO&\cdots&\varpi\cO&\varpi\cO\\
             \varpi\cO&\cO^\times&\cO&\cdots&\cO&\varpi\cO\\
             \varpi\cO&\varpi\cO&\ddots&\ddots&\vdots&\vdots\\
@@ -533,14 +534,9 @@
            \varpi\cO&\varpi\cO&\ldots&\varpi\cO&\varpi\cO&\cO^\times\\
         \end{pmatrix}
     \end{equation*}
-    and using the bijection 
-    \begin{align*}
-        Iw_{\alpha_0}I/I&\longleftrightarrow I/(I\cap w_{\alpha_0}(1)I w_{\alpha_0}(1)^{-1})\\
-        xw_{\alpha_0}I&\longmapsto x(I\cap w_{\alpha_0}(1)I w_{\alpha_0}(1)^{-1})
-    \end{align*}
-    we can express the double cosset $Iw_{\alpha_0}(1)I$ as a disjoint union of left cossets of $I$. Explicitly, we may choose a set of representatives $R$ of $k_F$ in $\cO$. Then one deduces that
+    and therefore we can express the double cosset $IsI$ as a disjoint union of left cossets of $I$ as
     \begin{equation*}
-        Iw_{\alpha_0}(1)I=\bigsqcup_{(\mathbf{a},\mathbf{b},c)\in R^{2n-1}}u_{\mathbf{a},\mathbf{b},c}w_{\alpha_0}(1)I\quad\text{where}\quad u_{\mathbf{a},\mathbf{b},c}=\begin{pmatrix}
+        IsI=\bigsqcup_{(\mathbf{a},\mathbf{b},c)\in k_F^{2n-1}}u_{\mathbf{a},\mathbf{b},c}sI\quad\text{where}\quad u_{\mathbf{a},\mathbf{b},c}=\begin{pmatrix}
             1&a_1&a_2&\cdots&a_{n-1}&c\\
             0&1&0&\cdots&0&b_{n-1}\\
             \vdots&\ddots&\ddots&\ddots&\vdots&\vdots\\
@@ -549,5 +545,25 @@
             0&\ldots&\ldots&\ldots&0&1\\
         \end{pmatrix}
     \end{equation*}
+    Here, we are abusing notation, and all elements of the matrix are assumed to be the lifts from $k_F$ to $\cO$ by the section $t$ fixed above.
+    \begin{lemma}
+        Let $(\mathbf{a},\mathbf{b},c)\in k_F^{2n-1}$. Then there is some $(\mathbf{x},\mathbf{y},z)\in k_F^{2n-1}$ such that 
+        $$su_{\mathbf{a},\mathbf{b},c}su_{\mathbf{x},\mathbf{y},z}s\in I$$
+        if and only if 
+        \begin{equation*}
+        c(c-\sum_{i+j=n}a_ib_j)\neq0\quad\text{and}\quad a_ib_j=0 \text{  if  } i+j<n.
+        \end{equation*}
+    \end{lemma}
+    To simplify notation, we let $$J_n=\{(\mathbf{a},\mathbf{b},c)\in k_F^{2n-1}|c(c-\sum_{i+j=n}a_ib_j)\neq0\quad\text{and}\quad a_ib_j=0 \text{  if  } i+j<n\}.$$
+    \begin{cor}
+        We have that
+        $$IsI\cap sIsI=\bigsqcup_{(\mathbf{a},\mathbf{b},c)\in J_n}u_{\mathbf{a},\mathbf{b},c}sI$$
+    \end{cor}
+
+    Let
+    With the previous results, we have that
+    \begin{align*}
+        \varphi
+    \end{align*}
 
 \end{document}
