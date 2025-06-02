@@ -26,7 +26,7 @@
     \end{proof}
 
     Then, the hard part of the proof is to show that $\varphi_s^2(s)=(q-1)\varphi_s(s)=(q-1)q^{1-l(s)}\check{\chi}(s)$ if $s\in S_{\chi,\aff}$.
-    The first step for proving this result consists in 
+    To prove this result in general, the first step is to prove it for a family of reflections of arbitrary length, which we complete in the following section.
 
     \subsection{Quadratic relation for a canonical example}
     We now prove the quadratic relation for a family of reflections containing one reflection for each possible length. We remark that any $s\in S_{\chi,\aff}$ is a reflection and, as such, $l(s)$ will always be odd.
@@ -233,10 +233,11 @@
 
         Next, we can compute each individual term from \eqref{eq_Rsum}. If $a_1=0$, we note that $b_{n-1}$ is completely free, and if we let $\mathbf{a}'=(a_2,\ldots,a_{n-1})$ and $\mathbf{b}'=(b_1,\ldots,b_{n-2})$, by Lemma \ref{lem_Jsets} we obtain
         \begin{align*}
-            R_n^{a_1}(q,\{\chi_0,\ldots,\chi_{n-1}\})=\sum_{\substack{(\mathbf{a},\mathbf{b},c)\in J_n\\ a_1=0}}\chi_0\left(\frac{c}{c-\sum_{i+j=n}a_ib_j}\right)\chi_2\left(\frac{c-a_2b_{n-2}}{c}\right)%\chi_2\left(\frac{c-a_2b_{n-2}}{c}\right)
+            R_n^{a_1}(q,\{\chi_0,\ldots,&\chi_{n-1}\})=\sum_{\substack{(\mathbf{a},\mathbf{b},c)\in J_n\\ a_1=0}}\chi_0\left(\frac{c}{c-\sum_{i+j=n}a_ib_j}\right)\chi_2\left(\frac{c-a_2b_{n-2}}{c}\right)%\chi_2\left(\frac{c-a_2b_{n-2}}{c}\right)
             \cdots\chi_{n-1}\left(\frac{c-a_{n-1}b_1}{c}\right)=\\
-            =q\sum_{(\mathbf{a}',\mathbf{b}',c)\in J_{n-1}}\chi_0\left(\frac{c}{c-\sum_{i+j=n-1}a'_ib'_j}\right)\chi_2\left(\frac{c-a'_1b'_{n-2}}{c}\right)%\chi_2\left(\frac{c-a_2b_{n-2}}{c}\right)
-            \cdots\chi_{n-1}\left(\frac{c-a'_{n-2}b'_1}{c}\right)=qR_{n-1}(q,\{\chi_0,\chi_2\ldots,\chi_{n-1}\}).
+            &=q\sum_{(\mathbf{a}',\mathbf{b}',c)\in J_{n-1}}\chi_0\left(\frac{c}{c-\sum_{i+j=n-1}a'_ib'_j}\right)\chi_2\left(\frac{c-a'_1b'_{n-2}}{c}\right)%\chi_2\left(\frac{c-a_2b_{n-2}}{c}\right)
+            \cdots\chi_{n-1}\left(\frac{c-a'_{n-2}b'_1}{c}\right)=\\
+            &=qR_{n-1}(q,\{\chi_0,\chi_2\ldots,\chi_{n-1}\}).
         \end{align*}
 
         An analogous calculation shows that $R_n^{b_1}(q,\{\chi_0,\ldots,\chi_{n-1}\})=qR_{n-1}(q,,\{\chi_0,\ldots,\chi_{n-2}\})$. Finally, applying Lemma \ref{lem_Jsets} twice gives a bijection 
@@ -246,10 +247,11 @@
         \end{align*}
         and if we let $\mathbf{a}'=(a_2,\ldots,a_{n-2})$ and $\mathbf{b}'=(b_2,\ldots,b_{n-2})$, then
         \begin{align*}
-            R_n^{a_1,b_1}(q,\{\chi_0,\ldots,\chi_{n-1}\})=\sum_{\substack{(\mathbf{a},\mathbf{b},c)\in J_n\\ a_1=b_1=0}}\chi_0\left(\frac{c}{c-\sum_{i+j=n}a_ib_j}\right)\chi_2\left(\frac{c-a_2b_{n-2}}{c}\right)%\chi_2\left(\frac{c-a_2b_{n-2}}{c}\right)
+            R_n^{a_1,b_1}(q,\{\chi_0,\ldots,&\chi_{n-1}\})=\sum_{\substack{(\mathbf{a},\mathbf{b},c)\in J_n\\ a_1=b_1=0}}\chi_0\left(\frac{c}{c-\sum_{i+j=n}a_ib_j}\right)\chi_2\left(\frac{c-a_2b_{n-2}}{c}\right)%\chi_2\left(\frac{c-a_2b_{n-2}}{c}\right)
             \cdots\chi_{n-2}\left(\frac{c-a_{n-2}b_2}{c}\right)=\\
-            =q^2\sum_{(\mathbf{a}',\mathbf{b}',c)\in J_{n-2}}\chi_0\left(\frac{c}{c-\sum_{i+j=n-2}a'_ib'_j}\right)\chi_2\left(\frac{c-a'_1b'_{n-3}}{c}\right)%\chi_2\left(\frac{c-a_2b_{n-2}}{c}\right)
-            \cdots\chi_{n-1}\left(\frac{c-a'_{n-3}b'_1}{c}\right)=q^2R_{n-2}(q,\{\chi_0,\chi_2\ldots,\chi_{n-2}\}).
+            &=q^2\sum_{(\mathbf{a}',\mathbf{b}',c)\in J_{n-2}}\chi_0\left(\frac{c}{c-\sum_{i+j=n-2}a'_ib'_j}\right)\chi_2\left(\frac{c-a'_1b'_{n-3}}{c}\right)%\chi_2\left(\frac{c-a_2b_{n-2}}{c}\right)
+            \cdots\chi_{n-1}\left(\frac{c-a'_{n-3}b'_1}{c}\right)=\\
+            &=q^2R_{n-2}(q,\{\chi_0,\chi_2\ldots,\chi_{n-2}\}).
         \end{align*}
         Putting everything together yields the desired recurrence relation.
     \end{proof}

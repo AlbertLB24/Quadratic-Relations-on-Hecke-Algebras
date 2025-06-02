@@ -1,6 +1,5 @@
 \section{The quadratic relation in general}
-
-    In this section we show that for any character $\chi=\chi_0\otimes\ldots\otimes\chi_n$ of $T(\cO)\subset\GL_{n+1}(F)$ and $s\in S_{\chi,\aff}$, the proof of the quadratic relation for $\varphi_s=q^{(1-l(s))/2}[IsI]_{\check{\chi}}$ can be deduced from the particular case proven in the previous section. Let $\Phi$ be the root system for $\GL_{n+1}$ with simple roots $\Pi=\{\alpha_1,\ldots,\alpha_n\}$. For each $w\in\widetilde{W}$, let 
+    Throughout this section, we specify the dimension of the Iwahori subgroup and we denote the Iwahori subgroup of $\GL_n(F)$ by $I_n$. In this section we show that for any character $\chi=\chi_0\otimes\ldots\otimes\chi_n$ of $T(\cO)\subset\GL_{n+1}(F)$ and $s\in S_{\chi,\aff}$, the proof of the quadratic relation for $\varphi_s=q^{(1-l(s))/2}[I_{n+1}sI_{n+1}]_{\check{\chi}}$ can be deduced from the particular case proven in the previous section. Let $\Phi$ be the root system for $\GL_{n+1}$ with simple roots $\Pi=\{\alpha_1,\ldots,\alpha_n\}$. For each $w\in\widetilde{W}$, let 
     $$\widetilde{\Delta}(w)=\{\text{hyperplanes }P\ |\ P\text{ separates }\mathcal{D}_0\text{ and }w\mathcal{D}_0\}.$$
     Recall from Iwahori-Matsumoto that $l(w)=|\widetilde{\Delta}(w)|$ for all $w\in\widetilde{W}$.
 
@@ -85,7 +84,7 @@
 
     \begin{example}
         In the previous section we considered the family of characters $\chi=\chi_0\otimes\cdots\otimes\chi_n$ such that $\chi_0=\chi_n$ and all the remaining characters are distinct. Then $\mathcal{P}_\chi=\{\{0,n\},\{1\},\ldots,\{n-1\}\}$ has size $n$, and Figure \ref{fig_diagn4} shows the diagram with $n=4$.
-        \begin{figure}[h]
+        \begin{figure}[ht]
             \begin{center}
                 \includegraphics[scale=0.8]{geogebra-export.png}
                 \caption{Diagram for $\mathcal{P}_\chi=\{\{0,4\},\{1\},\{2\},\{3\}\}$}
@@ -99,13 +98,13 @@
 
     \begin{definition}
         Let $\mathfrak{D}_\chi$ be the diagram associated to $\chi$ and let $i,j\in\{0,1,\ldots,n\}$ be two \textit{distinct} vertices, and we assume that $i<j$. Let 
-        $$\alpha_{i,j}=\alpha_{i+1}+\cdots+\alpha_{j-1}+\alpha_j\in\Phi^+$$
+        $$\alpha(i,j)=\alpha_{i+1}+\cdots+\alpha_{j-1}+\alpha_j\in\Phi^+$$
         be the positive root associated to the pair $(i,j)$. Let $T_{i,j,1}$, (resp. $T_{i,j,0}$) be the trail in $\mathfrak{D}_\chi$ from $i$ to $j$ avoiding (resp. passing through) the distinguished edge $e=\{0,n\}$. Then the associated reflection $w(T_{i,j,k})$ to the path $T_{i,j,k}$ is
         \begin{equation*}
             w(T_{i,j,k})=
             \begin{cases}
-                w_{\alpha_{i,j}}(1) &\text{ if } k=1,\\
-                w_{\alpha_{i,j}}(\varpi^{-1}) &\text{ if } k=0.
+                w_{\alpha(i,j)}(1) &\text{ if } k=1,\\
+                w_{\alpha(i,j)}(\varpi^{-1}) &\text{ if } k=0.
             \end{cases}
         \end{equation*}
     \end{definition}
@@ -118,30 +117,78 @@
     \begin{proof}
         Assume without loss of generality that $i<j$. 
         If $k=0$, then $l(T_{i,j,0})=j-i$, while Lemma \ref{lem_w1} shows that $l(w_{\alpha_{i,j}}(1))=2(j-i)+1$. If $k=1$, we may use Corollary \ref{cor_lengthsum} to obtain
-        $$l(w_{\alpha_{i,j}}(\varpi^{-1}))=2n-l(w_{\alpha_{i,j}}(1))=2n-2l(T_{i,j,0})+1=2(n+1-l(T_{i,j,0}))-1=2l(T_{i,j,1})-1,$$
+        $$l(w_{\alpha(i,j)}(\varpi^{-1}))=2n-l(w_{\alpha(i,j)}(1))=2n-2l(T_{i,j,0})+1=2(n+1-l(T_{i,j,0}))-1=2l(T_{i,j,1})-1,$$
         and this concludes the lemma.
     \end{proof}
 
+    For the remainder of this section, we fix a character $\chi=\chi_0\otimes\cdots\otimes\chi_n$ inducing a partition $\mathcal{P}_\chi=\{X_1,\ldots,X_r\}$, and for each $k\in\{1,\ldots,r\}$, write $X_k=\{x_{k,1}<\cdots<x_{k,m_k}\}$. In addition, let $\{T_{k,j}\ |\ j=1,\ldots,m_k\}$ be all the trails joining each consecutive pair of vertices $\{\{x_{k,j},x_{k,j+1}\}\ |\ j=1,\ldots,m_k\}$ in $X_k$. Finally, we denote by $\pi:\widetilde{W}\rightarrow W\cong \Sym\{0,\ldots,n\}$ the unique surjective group homomorphisms satisfying
+    \begin{align*}
+        \pi:\widetilde{W}&\longrightarrow W\cong \Sym\{0,\ldots,n\} \\
+        %w_{\alpha}(\lambda)\longmapsto w_{\alpha}, 
+        w_{\alpha_i}(\lambda)&\longmapsto
+        \begin{cases}
+            (i\ i+1) \text{ if } 1\leq i\leq n,\\
+            (0\ n) \text{ if } n=0.
+        \end{cases}
+    \end{align*}
+    This homomorphism has the important property that the action of $w\in\widetilde{W}$ on depth-zero characters permutes the characters on each diagonal entry by $\pi(w)\in \Sym\{0,\ldots,n\}$.
+
+    \begin{lemma}\label{lem_decomposesystem}
+        The root system $\Phi_\chi=\{\alpha\in\Phi\ |\ \chi\circ\valpha|_{\cO^\times}=1\}$ of the character $\chi$ is given by 
+        $$\Phi_\chi=\bigoplus_{k=1}^r\Phi_\chi^{(k)},$$
+        where $\Phi_\chi^{(k)}$ is the irreducible root system of type $A_{m_k-1}$ and simple roots given by 
+        $$\beta_{k,j}=\alpha_{x_{k,j}+1}+\cdots+\alpha_{x_{k,j+1}},\quad 1\leq j\leq m_k-1.$$
+    \end{lemma}
+
+    \begin{proof}
+        Firstly, we note that $\pi(\beta_{k,j})=(x_{k,j}\ \ x_{k,j+1})\in \Sym\{0,\ldots,n\}$ and that
+        \begin{align*}
+            \cbeta_{k,j}(\lambda)_{m,m}=
+            \begin{cases}
+                \lambda &\text{ if } m=x_{k,j},\\
+                \lambda^{-1} &\text{ if } m=x_{k,j+1},\\
+                0 &\text{ otherwise}.
+            \end{cases}
+        \end{align*}
+        Since $\chi_{x_{k,j}}=\chi_{x_{k,j+1}}$, it follows that $\beta_{k,j}\in\Phi_\chi$. On the other hand, if $\alpha\in\Phi_\chi\cap\Phi^+$, a similar reasoning shows that $\pi(\alpha)$ is a transposition of two elements $x_{k,j_1}, x_{k,j_2}\in X_k$ for some $k$ and $j_1<j_2$. But then we have that 
+        $$\alpha=\alpha_{x_{k,j_1}+1}+\cdots+\alpha_{x_{k,j_2}}=\beta_{k,j_1}+\cdots+\beta_{k,j_2-1},$$
+        which concludes the proof.
+    \end{proof}
+
+
     \begin{proposition}\label{prop_Schi}
-        Let $\chi$ be a depth-zero character of $T(\cO)$ and let $\mathfrak{D}_\chi$ be the associated diagram induced by the partition $\mathcal{P}_\chi=\{A_1,\ldots,A_r\}$ of its vertices. For each set $k\in\{1,\ldots,r\}$, write $A_k=\{a_{k,1}<\cdots<a_{k,m_k}\}$ and let $\{T_{k,i}\ |\ i=1,\ldots,m_k\}$ be all the paths joining each consecutive pair of vertices in $A_k$. Then
+        Let $\chi$ be a depth-zero character of $T(\cO)$ and let $\mathfrak{D}_\chi$ be the associated diagram induced by the partition $\mathcal{P}_\chi=\{X_1,\ldots,X_r\}$ of its vertices. Then
         \begin{equation*}
-            S_{\chi,\aff}=\bigcup_{k=1}^r \{w(T_{k,1}),\ldots,w(T_{k,m_k})\}.
+            S_{\chi,\aff}=\bigcup_{k=1}^r \{w(T_{k,1}),\ldots,w(T_{k,m_k})\},
         \end{equation*}
+        where $T_{k,j}$ are the trails constructed above. 
     \end{proposition}
 
     \begin{proof}
-        Firstly, we note that if $\mathcal{P}_\chi=\{A_1,\ldots,A_r\}$, which each $A_k$ of size $m_k$, then 
-        $$\widetilde{W}_\chi\cong \widetilde{W}_{\chi^{(1)}}\times\cdots\times\widetilde{W}_{\chi^{(r)}},$$
-        where $\chi^{(k)}=\chi_{a_{k,1}}\otimes\cdots\otimes\chi_{a_{k,m_k}}$ is the depth-zero character of $\GL_{m_k}$, and $\widetilde{W}_{\chi^{(k)}}$ is viewed as a subgroup of $\widetilde{W}_{\chi}$ in the obvious way. Each $\widetilde{W}_{\chi^{(k)}}$ is isomorphic to the extended Weyl group of $\GL_{m_k}$, and if we let $S_{\chi,\aff,k}$ be the set of simple reflections of $\widetilde{W}_{\chi^{(k)}}$ viewed as a subgroup of $\widetilde{W}_{\chi}$, then 
+
+        By Lemma \ref{lem_decomposesystem}, the partition $\mathcal{P}_\chi=\{X_1,\ldots,X_r\}$ induces a decomposition 
+        $$\Phi_\chi=\bigoplus_{k=1}^r\Phi_\chi^{(k)},$$
+        where $\Phi_\chi^{(k)}$ is an irreducible root system of type $A_{m_k-1}$. This induces a direct product decomposition
+        $$W_{\chi,\aff}\cong W_{\chi,\aff}^{(1)}\times\cdots\times W_{\chi,\aff}^{(r)},$$
+        where 
+        $$W_{\chi,\aff}^{(k)}:=\{w\in W_{\chi,\aff}\ |\ \pi(w)(j)=j\text{ for all }j\not\in A_k\}$$
+        is the affine Weyl group with underlying root system $\Phi_\chi^{(k)}$.
+        Moreover, the direct product implies that the length function of each $W_{\chi,\aff}^{(k)}$ agrees with the length function $l_\chi$ on $W_{\chi,\aff}$ and therefore if $S_{\chi,\aff,k}$ is the set of simple reflections of $W_{\chi,\aff}^{(k)}$, then
         $$S_{\chi,\aff}=\bigcup_{k=1}^r S_{\chi,\aff,k}.$$
-        It therefore suffices to show that 
+        Hence, it suffices to show that 
         $$S_{\chi,\aff,k}=\{w(T_{k,1}),\ldots,w(T_{k,m_k})\}.$$
-        \textcolor{red}{still remains to prove this, which is definitely expected to be true!}
+        In Lemma \ref{lem_decomposesystem}, we showed that the simple roots of $\Phi_\chi^{(k)}$ has simple roots given by 
+        $$\beta_{k,j}=\alpha_{x_{k,j}+1}+\cdots+\alpha_{x_{k,j+1}},\quad 1\leq j\leq m_k-1.$$
+        Each simple root gives rise to a simple reflection $w_{\beta_{k,j}}(1)=w(T_{k,j})$ for $1\leq j\leq m_k$. The last simple reflection is given by the highest root. Since $\Phi_\chi^{(k)}$ is of type $A_{m_k-1}$, then the highest root is 
+        $$\beta_{k,0}=\beta_{k,1}+\cdots+\beta_{k,m_k-1}=\alpha_{x_{k,1}+1}+\cdots+\alpha_{x_{k,m_k-1}},$$
+        and the simple reflection is $w_{\beta_{k,0}}(\varpi^{-1})=w(T_{k,m_k})$ since $T_{k,m_k}$ crosses the distinguished edge $e=\{0,n\}$ in $\mathfrak{D}_\chi$. Thus,
+        $$S_{\chi,\aff,k}=\{w_{\beta_{k,1}}(1),\ldots,w_{\beta_{k,m_k-1}}(1),w_{\beta_{k,0}}(\varpi^{-1})\}=\{w(T_{k,1}),\ldots,w(T_{k,m_k})\},$$
+        as desired.
     \end{proof}
         
     \subsection{The induced homomorphism on Hecke algebras}
 
-    Having established a way to easily determine $S_{\chi,\aff}$ from the character $\chi$, in this subsection we construct, for each depth-zero character $\chi$ and $s\in S_{\chi,\aff}$, a homomorphism of $p$-adic groups $\psi_s$ with certain nice properties that induce a homomorphism on Hecke algebras. This homomorphism $\psi_s$ will be our main tool to deduce the quadratic equation for $\varphi_s=q^{(1-l(s))/2}[IsI]_{\check{\chi}}$ from our results in the previous section.
+    Having established a way to easily determine $S_{\chi,\aff}$ from the character $\chi$, in this subsection we construct, for each depth-zero character $\chi$ and $s\in S_{\chi,\aff}$, a homomorphism of $p$-adic groups $\psi_s$ with certain nice properties that induce a homomorphism on Hecke algebras. This homomorphism $\psi_s$ will be our main tool to deduce the quadratic equation for $\varphi_s=q^{(1-l(s))/2}[I_{n+1}sI_{n+1}]_{\check{\chi}}$ from our results in the previous section.
 
     Before we can construct these homomorphisms, we first need to consider the element
     \begin{equation*}
@@ -210,13 +257,13 @@
     \begin{lemma}
         For any depth-zero character $\chi$ of $T(\cO)\subset\GL_{n+1}$ and any $s\in S_{\chi,\aff}$, the homomorphism $\psi_s:\GL_{l+1}(F)\longrightarrow\GL_{n+1}(F)$ satisfies the following properties:
         \begin{enumerate}
-            \item $\psi_s^{-1}(T(\cO))=T(\cO)$ and $\psi_s^{-1}(N)=N$,
-            \item $\psi_s^{-1}(I)=I$.
+            \item $\psi_s^{-1}(T(\cO))=T(\cO)$ and $\psi_s^{-1}(N_{n+1})=N_{l+1}$, where $N_i=N_{\GL_i}(T(\cO))$,
+            \item $\psi_s^{-1}(I_{n+1})=I_{l+1}$.
         \end{enumerate}
     \end{lemma}
 
     \begin{proof}
-        Both properties are immediate for the homomorphism $\phi_{l,n}$. The map $\phi_s$ is an isomorphism, and it preserves the $\cO$-points of the torus $T$ and the normalizer of the tori $N$ since $\rho_n\in N(F)=N_G(T(\cO))$. It also preserves the Iwahori subgroup $I$ since $\rho_n$ is a fundamental alcove stabilizer. This concludes the proof.
+        Both properties are immediate for the homomorphism $\phi_{l,n}$. The map $\phi_s$ is an isomorphism, and it preserves the $\cO$-points of the torus $T$ and the normalizer of the tori $N$ since $\rho_n\in N(F)=N_G(T(\cO))$. It also preserves the Iwahori subgroup $I_{n+1}$ since $\rho_n$ is a fundamental alcove stabilizer. This concludes the proof.
     \end{proof}
 
     The previous lemma shows that $\psi_s$ induces a homomorphism of extended Weyl groups $\overline{\psi}_s:\widetilde{W}_{l+1}\rightarrow\widetilde{W}_{n+1}$. If $s$ corresponds to a trail $T_s$ on $\mathfrak{D}_\chi$ connecting the vertices $i$ and $j=i+l\pmod{n+1}$ in $\mathfrak{D}_\chi$, we consider the character $$\chi^{(s)}:=\chi_i\otimes\chi_{i+1}\otimes\cdots\otimes\chi_{j-1}\otimes\chi_j$$
@@ -248,11 +295,11 @@
     %of $T(\cO)\subset\GL_{l+1}(F)$, where subscripts are taken mod $n+1$. 
 
     \begin{lemma}\label{lem_compatible-rho}
-        For any $k\in I\subset\GL_{l+1}(F)$, 
+        For any $k\in I_{l+1}\subset\GL_{l+1}(F)$, 
         $$\rho_\chi(\psi_s(k))=\rho_{\chi^{(s)}}(k).$$
     \end{lemma}
     \begin{proof}
-        Fix some $k\in I\subset\GL_{l+1}(F)$ and let $\chi=\chi_0\otimes\cdots\otimes\chi_n$.
+        Fix some $k\in I_{l+1}\subset\GL_{l+1}(F)$ and let $\chi=\chi_0\otimes\cdots\otimes\chi_n$.
         By definition of $\phi_{l,n}$, we have that
         $$\rho_\chi(\phi_{l,n}(k))=\rho_{\chi'}(k),$$
         where $\chi'=\chi_0\otimes\cdots\otimes\chi_l$ is obtained from $\chi$ by taking the characters of the first $l+1$ entries. Moreover, since conjugating by $\rho_n$ permutes the diagonal entries according to \eqref{eqn:rhon}, it follows that for any $h\in I\subset\GL_{n+1}$, 
@@ -265,58 +312,140 @@
     \end{proof}
 
     We are finally ready to prove the existence of a surjective algebra homomorphism between Hecke algebras.
-
-    \begin{proposition}\label{prop_algebrahom}
+    \iffalse
+    \begin{proposition}
         The homomorphism $\psi_s$ induces a surjective Hecke algebra homomorphism 
         \begin{equation*}
-            \Psi_s:\cH(\GL_{n+1},I,\rho_\chi)\longrightarrow\cH(\GL_{l+1},I,\rho_{\chi^{(s)}}),
+            \Psi_s:\cH(\GL_{n+1},I_{n+1},\rho_\chi)\longrightarrow\cH(\GL_{l+1},I_{l+1},\rho_{\chi^{(s)}}),
         \end{equation*}
         where
-        $$\Psi_s(\varphi)(g)=\varphi(\psi_s(g)),\quad\quad \varphi\in\cH(\GL_{n+1},I,\rho_\chi),\ g\in\GL_{l+1}(F).$$
-        Furthermore, for every $w\in\widetilde{W}_{\chi^{(s)}}$,
-        $$\Psi_s([I\overline{\psi}_s(w)I])=[IwI].$$
+        $$\Psi_s(\varphi)(g)=\varphi(\psi_s(g)),\quad\quad \varphi\in\cH(\GL_{n+1},I_{n+1},\rho_\chi),\ g\in\GL_{l+1}(F).$$
+        Furthermore, the association $\psi_s\mapsto\Psi_s$ is functorial and, for every $w\in\widetilde{W}_{\chi^{(s)}}$,
+        $$\Psi_s([I_{n+1}\overline{\psi}_s(w)I_{n+1}])=[I_{l+1}wI_{l+1}].$$
     \end{proposition}
     \begin{proof}
-        For any $\varphi\in\cH(\GL_{n+1},I,\rho_\chi)$, we have that $\supp(\Psi_s(\varphi))=\psi_s^{-1}(\supp(\varphi))$, a compact subset of $\GL_{l+1}(F)$ since $\psi_s$ is a continuous map. Moreover, if $k_1,k_2\in I\subset\GL_{l+1}(F)$ and $g\in\GL_{l+1}(F)$, then by Lemma \ref{lem_compatible-rho}
+        For any $\varphi\in\cH(\GL_{n+1},I_{n+1},\rho_\chi)$, we have that $\supp(\Psi_s(\varphi))=\psi_s^{-1}(\supp(\varphi))$, a compact subset of $\GL_{l+1}(F)$ since $\psi_s$ is a continuous map. Moreover, if $k_1,k_2\in I\subset\GL_{l+1}(F)$ and $g\in\GL_{l+1}(F)$, then by Lemma \ref{lem_compatible-rho}
         $$\Psi_s(\varphi)(k_1gk_2)=\varphi(\psi_s(k_1gk_2))=\rho_\chi(\psi_s(k_1))\varphi(\psi_s(g))\rho_\chi(\psi_s(k_2))=\rho_{\chi^{(s)}}(k_1)\Psi_s(g)\rho_{\chi^{(s)}}(k_2),$$
-        so $\Psi_s(\varphi)\in\cH(\GL_{l+1},I,\rho_{\chi^{(s)}})$. 
+        so $\Psi_s(\varphi)\in\cH(\GL_{l+1},I_{l+1},\rho_{\chi^{(s)}})$.
 
-        \textcolor{red}{By Lemma \ref{lem_hompsi_s}, $\overline{\psi}_s(w)\in \widetilde{W}_{\chi}$ for any $w\in\widetilde{W}_{\chi^{(s)}}$ and since $\psi_s$ is an injective homomorphism,
+        \textcolor{red}{Moreover, by Lemma \ref{lem_hompsi_s}, $\overline{\psi}_s(w)\in \widetilde{W}_{\chi}$ for any $w\in\widetilde{W}_{\chi^{(s)}}$ and since $\psi_s$ is an injective homomorphism,
         \begin{equation*}
-            \Psi_s\left([I\overline{\psi}_s(w)I]\right)(g)=[I\overline{\psi}_s(w)I](\psi_s(g))=
+            \Psi_s\left([I_{n+1}\overline{\psi}_s(w)I_{n+1}]\right)(g)=[I_{n+1}\overline{\psi}_s(w)I_{n+1}](\psi_s(g))=
             \begin{cases}
-                [IwI](g)&\text{ if }g\in IwI,\\
+                [I_{l+1}wI_{l+1}](g)&\text{ if }g\in I_{l+1}wI_{l+1},\\
                 0 &\text{ otherwise}.
             \end{cases}
-            =[IwI](g)
+            =[I_{l+1}wI_{l+1}](g)
         \end{equation*}}
         
-        This also implies that the map $\Psi_s$ is surjective since $\{[IwI]\ |\ w\in\widetilde{W}_{\chi^{(s)}}\}$ is a $C$-basis of $\cH(\GL_{l+1},I,\rho_{\chi^{(s)}})$.
-        Finally, to show that $\Psi_s$ is an algebra homomorphism, we compute, for each $\varphi_1,\varphi_2\in\cH(\GL_{n+1},I,\rho_\chi)$ and $g\in\GL_{l+1}(F)$,
+        This also implies that $\Psi_s$ is a surjective $C$-linear map since $\{[I_{l+1}wI_{l+1}]\ |\ w\in\widetilde{W}_{\chi^{(s)}}\}$ is a $C$-basis of $\cH(\GL_{l+1},I_{l+1},\rho_{\chi^{(s)}})$.
+
+        Finally, we want to show that $\Psi_s$ is an algebra homomorphism. For this, we note that since $\psi_s=\phi_s\circ\phi_{l,n}$, the map $\Psi_s$ is the composition of the two linear maps
+        \begin{equation*}
+            \cH(\GL_{n+1},I_{n+1},\rho_\chi)\xrightarrow{\Phi_s}\cH(\GL_{n+1},I_{n+1},\rho_{\chi'})\xrightarrow{\Phi_{l,n}}\cH(\GL_{l+1},I_{n+1},\rho_{\chi^{(s)}}),
+        \end{equation*}
+        induced by $\phi_s$ and $\phi_{l,n}$ respectively, and where $\chi'=\chi^{(s)}\otimes\chi_{j+1}\otimes\cdots\otimes\chi_{i-1}$. Therefore, it is enough to show that $\Phi_s$ and $\Phi_{l,n}$ are both algebra homomorphisms. The proof of the first one is straightforward; for any $\varphi_1,\varphi_2\in\cH(\GL_{n+1},I_{n+1},\rho_\chi)$ and $g\in\GL_{n+1}$, we have that 
         \begin{align*}
-            \Psi_s(\varphi_1*\varphi_2)(g)&=(\varphi_1*\varphi_2)(\psi_s(g))=\int_{\GL_{n+1}}\varphi_1(\psi_s(g)h)\varphi_2(h^{-1})dh
-            =\int_{\GL_{l+1}}\varphi_1(\psi_s(g)\psi(h))\varphi_2(\psi_s(h)^{-1})dh\\
-            &=\int_{\GL_{l+1}}\Psi_s(\varphi_1)(gh)*\Psi_s(\varphi_2)(h^{-1})dh=\Psi_s(\varphi_1)*\Psi_s(\varphi_2)(g),
+            \Phi_s(\varphi_1*\varphi_2)(g)&=(\varphi_1*\varphi_2)(\phi_s(g))=\int_{\GL_{n+1}}\varphi_1(\phi_s(g)h)\varphi_2(h^{-1})dh
+            =\int_{\GL_{n+1}}\varphi_1(\phi_s(g)\phi_s(h))\varphi_2(\phi_s(h)^{-1})dh\\
+            &=\int_{\GL_{n+1}}\Phi_s(\varphi_1)(gh)*\Phi_s(\varphi_2)(h^{-1})dh=\Phi_s(\varphi_1)*\Phi_s(\varphi_2)(g),
         \end{align*}
-        as desired.
+        since $\GL_{n+1}$ is unimodular and $\phi_s$ is the conjugation of some power of $\rho_n$. The proof that the second map is an algebra homomorphism is much more technical. It is clear from the previous equation that $\Phi_{l,n}$ is an algebra homomorphism if the following holds.
     \end{proof}
 
-    With the previous proposition, we now have all the ingredients to prove the quadratic relation for $\varphi_s=q^{(1-l(s))/2}[IsI]_{\check{\chi}}\in\cH(\GL_{n+1})$. 
+
+        \begin{lemma}
+            For any $\varphi_1,\varphi_2\in\cH(\GL_{n+1},I_{n+1},\rho_{\chi'})$ and $g\in\GL_{l+1}$, we have that
+            \begin{equation*}
+                \int_{\GL_{n+1}}\varphi_1(\phi_{l,n}(g)A)\varphi_2(A^{-1})dA=\int_{\GL_{l+1}}\varphi_1(\phi_{l,n}(g)\phi_{l,n}(B))\varphi_2(\phi_{l,n}(B)^{-1})dB,
+            \end{equation*}
+            where both Haar measures give a measure of $1$ to the respective Iwahori subgroups.
+        \end{lemma}
+        \begin{proof}
+            Firstly, we recall that $\{[I_{n+1}wI_{n+1}]\ |\ w\in\widetilde{W}_{\chi'}\}$ is a $C$-basis of $\cH(\GL_{n+1},I_{n+1},\rho_{\chi'})$, and therefore it is enough to prove the result for $\varphi_1=[I_{n+1}w_1I_{n+1}], \varphi_2=[I_{n+1}w_2I_{n+1}]$. Then it follows that the support of the left hand side is 
+            $$\supp(LHS)=\phi_{l,n}(g)^{-1}I_{n+1}w_1I_{n+1}\cap I_{n+1}w_2^{-1}I_{n+1},$$
+            while the support on the right hand side is 
+            $$\supp(RHS)=g^{-1}I_{l+1}\phi_{l,n}^{-1}(w_1)I_{l+1}\cap I_{l+1}\phi_{l,n}^{-1}(w_2^{-1})I_{n+1},$$
+
+            \textcolor{red}{I believe this statement is in fact not correct. We only have a group homomorphism restricted to a certain subalgebra of $\cH$}.
+        \end{proof}
+    \fi
+
+    \begin{proposition}\label{prop_algebrahom}
+        The homomorphism $\psi_s$ induces a surjective $C$-linear map
+        \begin{equation*}
+            \Psi_s:\cH(\GL_{n+1},I_{n+1},\rho_\chi)\longrightarrow\cH(\GL_{l+1},I_{l+1},\rho_{\chi^{(s)}}),
+        \end{equation*}
+        where
+        $$\Psi_s(\varphi)(g)=\varphi(\psi_s(g)),\quad\quad \varphi\in\cH(\GL_{n+1},I_{n+1},\rho_\chi),\ g\in\GL_{l+1}(F).$$
+        Furthermore, for every $w\in\widetilde{W}_{\chi^{(s)}}$,
+        $$\Psi_s([I_{n+1}\overline{\psi}_s(w)I_{n+1}])=[I_{l+1}wI_{l+1}],$$
+        and the $\Psi_s$ gives an isomorphism between $\cH(\GL_{l+1},I_{l+1},\rho_{\chi^{(s)}})$ and the subalgebra of $\cH(\GL_{n+1},I_{n+1},\rho_\chi)$ spanned by $\{[I_{n+1}\overline{\psi}_s(w)I_{n+1}]\ |\ w\in \widetilde{W}_{\chi^{(s)}}\}$.
+    \end{proposition}
+    \begin{proof}
+        For any $\varphi\in\cH(\GL_{n+1},I_{n+1},\rho_\chi)$, we have that $\supp(\Psi_s(\varphi))=\psi_s^{-1}(\supp(\varphi))$, a compact subset of $\GL_{l+1}(F)$ since $\psi_s$ is a continuous map. Moreover, if $k_1,k_2\in I\subset\GL_{l+1}(F)$ and $g\in\GL_{l+1}(F)$, then by Lemma \ref{lem_compatible-rho}
+        $$\Psi_s(\varphi)(k_1gk_2)=\varphi(\psi_s(k_1gk_2))=\rho_\chi(\psi_s(k_1))\varphi(\psi_s(g))\rho_\chi(\psi_s(k_2))=\rho_{\chi^{(s)}}(k_1)\Psi_s(g)\rho_{\chi^{(s)}}(k_2),$$
+        so $\Psi_s(\varphi)\in\cH(\GL_{l+1},I_{l+1},\rho_{\chi^{(s)}})$.
+
+        \textcolor{red}{Moreover, by Lemma \ref{lem_hompsi_s}, $\overline{\psi}_s(w)\in \widetilde{W}_{\chi}$ for any $w\in\widetilde{W}_{\chi^{(s)}}$ and since $\psi_s$ is an injective homomorphism,
+        \begin{equation*}
+            \Psi_s\left([I_{n+1}\overline{\psi}_s(w)I_{n+1}]\right)(g)=[I_{n+1}\overline{\psi}_s(w)I_{n+1}](\psi_s(g))=
+            \begin{cases}
+                [I_{l+1}wI_{l+1}](g)&\text{ if }g\in I_{l+1}wI_{l+1},\\
+                0 &\text{ otherwise}.
+            \end{cases}
+            =[I_{l+1}wI_{l+1}](g)
+        \end{equation*}}
+        
+        This also implies that $\Psi_s$ is a surjective $C$-linear map since $\{[I_{l+1}wI_{l+1}]\ |\ w\in\widetilde{W}_{\chi^{(s)}}\}$ is a $C$-basis of $\cH(\GL_{l+1},I_{l+1},\rho_{\chi^{(s)}})$. Moreover, it is clear that $\Psi_s$ gives an isomorphism of the two spaces as $C$-vector spaces, so it is an isomorphism as $C$-algebras if we show that 
+        \begin{align*}
+            \Psi_s\left([I_{n+1}\overline{\psi}_s(w_1)I_{n+1}]*[I_{n+1}\overline{\psi}_s(w_2)I_{n+1}]\right)&=\Psi_s\left([I_{n+1}\overline{\psi}_s(w_1)I_{n+1}]\right)*\Psi_s\left([I_{n+1}\overline{\psi}_s(w_2)I_{n+1}]\right)=\\
+            &=[I_{l+1}w_1I_{l+1}]*[I_{l+1}w_2I_{l+1}]
+        \end{align*}
+        for any $w_1,w_2\in\widetilde{W}_{\chi^{(s)}}$. To simplify notation, let $\varphi_k=[I_{n+1}\overline{\psi}_s(w_k)I_{n+1}]$ and $v_k=\overline{\psi}_s(w_k)$ for $k=1,2$. By definition,
+        \begin{align*}
+            \Psi_s\left(\varphi_1*\varphi_2\right)(g)=\int_{\psi(g)^{-1}I_{n+1}v_1I_{n+1}\cap I_{n+1}v_2^{-1}I_{n+1}}\varphi_1(\psi_s(g)A)\varphi_2(A^{-1})dA.
+        \end{align*}
+        and a direct computation yields that if 
+        \begin{equation*}
+            \psi_s(g)^{-1}I_{n+1}v_1I_{n+1}\cap I_{n+1}v_2^{-1}I_{n+1}=\sqcup_{j\in J}h_jI_{n+1},\quad\text{then}\quad g^{-1}I_{l+1}w_1I_{l+1}\cap I_{l+1}w_2^{-1}I_{l+1}=\sqcup_{j\in J}\psi_s^{-1}(h_jI_{n+1}),
+        \end{equation*}
+        none of which are empty \textcolor{red}{(one can give an easy justification here; by parabolic subgroups stuff, $v_2$ and $w_2$ have the same length in their respective Weyl groups, 
+        and therefore each left $I_{n+1}$ cosset of $I_{n+1}v_2^{-1}I_{n+1}$ has an element lying in the image of $\Psi_s$)}. 
+        Therefore, we may choose each $h_j$ to be in the image of $\psi_s$, in which case $\psi_s^{-1}(h_jI_{n+1})=\psi_s^{-1}(h_j)I_{l+1}$. Hence,
+        \begin{align*}
+            \Psi_s\left(\varphi_1*\varphi_2\right)(g)&=\sum_{j\in J}\int_{h_jI_{n+1}}\varphi_1(\psi_s(g)A)\varphi_2(A^{-1})dA\\
+            &=\sum_{j\in J}\int_{I_{n+1}}\varphi_1(\psi_s(g)h_jK)\varphi_2(K^{-1}h_j^{-1})dK
+            =\sum_{j\in J}\varphi_1(\psi_s(g)h_j)\varphi_2(h_j^{-1})
+        \end{align*}
+        while
+        \begin{align*}
+            \Psi_s\left(\varphi_1\right)*\Psi_s\left(\varphi_2\right)(g)=
+            \sum_{j\in J}\int_{\psi_s^{-1}(h_j)I_{l+1}}\varphi_1(\psi_s(gB))\varphi_2(\psi_s(B))dB\\
+            =\sum_{j\in J}\int_{I_{l+1}}\varphi_1(\psi_s(g)h_j\psi_s(K))\varphi_2(\psi_s(K)^{-1}h_j^{-1})dK=\sum_{j\in J}\varphi_1(\psi_s(g)h_j)\varphi_2(h_j^{-1}),
+        \end{align*}
+        and this concludes the proof.
+    \end{proof}
+
+    With the previous proposition, we now have all the ingredients to prove the quadratic relation for $\varphi_s=q^{(1-l(s))/2}[I_{n+1}sI_{n+1}]_{\check{\chi}}\in\cH(\GL_{n+1})$. 
 
     \begin{theorem}
-        Let $\chi=\chi_0\otimes\cdots\otimes\chi_n$ be a depth-zero character of $T(\cO)\subset\GL_{n+1}$ and let $s\in S_{\chi,\aff}$. If $$\varphi_s=q^{\frac{1-l(s)}{2}}[IsI]_{\check{\chi}}\in\cH(\GL_{n+1},I,\rho_\chi),$$
+        Let $\chi=\chi_0\otimes\cdots\otimes\chi_n$ be a depth-zero character of $T(\cO)\subset\GL_{n+1}$ and let $s\in S_{\chi,\aff}$. If $$\varphi_s=q^{\frac{1-l(s)}{2}}[I_{n+1}sI_{n+1}]_{\check{\chi}}\in\cH(\GL_{n+1},I_{n+1},\rho_\chi),$$
         then
         $$\varphi_s^2=(q-1)\varphi_s+q\varphi_1.$$
     \end{theorem}
     \begin{proof}
-        Consider the algebra homomorphism $\Psi_s:\cH(\GL_{n+1},I,\rho_\chi)\longrightarrow\cH(\GL_{l+1},I,\rho_{\chi^{(s)}})$, and by Proposition \ref{prop_algebrahom} we have that 
+        Consider the linear map $\Psi_s:\cH(\GL_{n+1},I,\rho_\chi)\longrightarrow\cH(\GL_{l+1},I,\rho_{\chi^{(s)}})$, and by Proposition \ref{prop_algebrahom} we have that 
         \begin{align*}
-            \Psi_s(\varphi_s)=q^{\frac{(1-l(s))}{2}}\Psi_s([IsI]_{\check{\chi}})&=q^{\frac{(1-l(s))}{2}}\Psi_s([I\overline{\psi}_s(w_{\beta_0}(1))I]_{\check{\chi}})\\
-            &=q^{\frac{(1-l(w_{\beta_0}(1)))}{2}}[Iw_{\beta_0}(1)I]=\varphi_{w_{\beta_0}(1)}\in\cH(\GL_{l+1},I,\rho_{\chi^{(s)}}).
+            \Psi_s(\varphi_s)=q^{\frac{(1-l(s))}{2}}\Psi_s([I_{n+1}sI_{n+1}]_{\check{\chi}})&=q^{\frac{(1-l(s))}{2}}\Psi_s([I_{n+1}\overline{\psi}_s(w_{\beta_0}(1))I_{n+1}]_{\check{\chi}})\\
+            &=q^{\frac{(1-l(w_{\beta_0}(1)))}{2}}[I_{l+1}w_{\beta_0}(1)I_{l+1}]=\varphi_{w_{\beta_0}(1)}\in\cH(\GL_{l+1},I_{n+1},\rho_{\chi^{(s)}}).
         \end{align*}
-        By the results on the previous section, we know that $\varphi_{w_{\beta_0}(1)}$ satisfies the desired quadratic relation, and since $\Psi_s$ is an algebra homomorphism, it follows that 
+        By the results on the previous section, we know that $\varphi_{w_{\beta_0}(1)}$ satisfies the desired quadratic relation. Moreover, since $s=\overline{\psi}_s(w_{\beta_0}(1))$, we have that $\varphi_s$ lies in the subalgebra of $\cH(\GL_{n+1},I_{n+1},\rho_\chi)$ defined in the previous proposition, isomorphic to $\cH(\GL_{l+1},I_{l+1},\rho_{\chi^{(s)}})$ under $\Psi_s$. Therefore, $\varphi_s$ satisfies the quadratic relation
+        \iffalse
+        and since $\Psi_s$ is an algebra homomorphism, it follows that 
         $$\varphi_s^2-(q-1)\varphi_s-q\varphi_1\in\ker\Psi_s\cap \Span_C\{\varphi_1,\varphi_s\}.$$
         However, $\Psi_s(\varphi_s)=\varphi_{w_{\beta_0}(1)}$ and $\Psi_s(\varphi_1)=\varphi_1$, which are non-zero and linearly independent in $\cH(\GL_{l+1},I,\rho_{\chi^{(s)}})$. Thus, $\ker\Psi_s\cap \Span_C\{\varphi_1,\varphi_s\}=\{0\}$, yielding  
+        \fi
         $$\varphi_s^2=(q-1)\varphi_s+q\varphi_1$$
         and this concludes the proof.
     \end{proof}
